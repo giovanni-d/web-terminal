@@ -70,6 +70,17 @@ Options:
 terminal-server --port 8080 --host 127.0.0.1
 ```
 
+## Supported Platforms
+
+| Platform     | Architecture |
+| ------------ | ------------ |
+| Linux        | x86_64, ARM64 |
+| macOS        | x86_64, ARM64 (Apple Silicon) |
+
+Windows is not supported — the server relies on Unix PTYs (`pty-process`).
+
+Pre-built binaries for all platforms are available on the [Releases](https://github.com/giovanni-d/web-terminal/releases) page.
+
 ## Project Structure
 
 ```
