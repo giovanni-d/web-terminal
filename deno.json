@@ -1,0 +1,30 @@
+{
+  "name": "@myorg/terminal-wasm",
+  "version": "0.1.0",
+  "exports": "./src/main.ts",
+  "tasks": {
+    "dev": "deno run -A scripts/dev.ts",
+    "build": "deno run -A npm:vite build",
+    "build:all": "deno task server:build && deno task build",
+    "start": "./server/target/release/terminal-server",
+    "server:build": "cd server && cargo build --release",
+    "server:clean": "cd server && cargo clean",
+    "clean": "deno task server:clean"
+  },
+  "nodeModulesDir": "auto",
+  "imports": {
+    "vite": "npm:vite@^5.0.0",
+    "@xterm/xterm": "npm:@xterm/xterm@^5",
+    "@xterm/addon-fit": "npm:@xterm/addon-fit@^0.10",
+    "@xterm/addon-webgl": "npm:@xterm/addon-webgl@^0.18",
+    "@xterm/addon-web-links": "npm:@xterm/addon-web-links@^0.11",
+    "@xterm/addon-search": "npm:@xterm/addon-search@^0.15",
+    "@xterm/addon-clipboard": "npm:@xterm/addon-clipboard@^0.1",
+    "@xterm/addon-unicode-graphemes": "npm:@xterm/addon-unicode-graphemes@^0.4"
+  },
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom", "dom.iterable", "esnext"],
+    "strict": true
+  },
+  "exclude": ["server/"]
+}
