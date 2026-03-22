@@ -94,7 +94,9 @@ export class Session {
 
       if (event.ctrlKey && event.key === "c") {
         if (this.terminal.hasSelection()) {
-          navigator.clipboard.writeText(this.terminal.getSelection()).catch(() => {});
+          navigator.clipboard.writeText(this.terminal.getSelection()).catch(
+            () => {},
+          );
           this.terminal.clearSelection();
           return false;
         }

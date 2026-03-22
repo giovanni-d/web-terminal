@@ -21,8 +21,14 @@ impl PtySession {
         pty.resize(Size::new(rows, cols)).map_err(pty_err)?;
 
         let pts = pty.pts().map_err(pty_err)?;
+        let cwd = std::env::current_exe()
+            .ok()
+            .and_then(|p| p.parent().map(|p| p.to_path_buf()))
+            .unwrap_or_else(|| std::env::current_dir().unwrap_or_else(|_| "/".into()));
+
         let child = PtyCommand::new(&shell)
             .arg("-l")
+            .current_dir(&cwd)
             .env("TERM", "xterm-256color")
             .env("COLORTERM", "truecolor")
             .spawn(&pts)

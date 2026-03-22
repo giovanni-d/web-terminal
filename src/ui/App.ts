@@ -15,7 +15,9 @@ export class App {
       onSelect: (id) => this.activate(id),
       onClose: (id) => this.closeSession(id),
       onNew: () => this.createSession(),
-      onReorder: (ids) => { this.tabOrder = ids; },
+      onReorder: (ids) => {
+        this.tabOrder = ids;
+      },
     });
 
     this.terminalArea = document.createElement("div");
@@ -28,7 +30,9 @@ export class App {
     this.terminalArea.appendChild(this.statusBar);
 
     this.resizeObserver = new ResizeObserver(() => {
-      const active = this.activeId !== null ? this.sessions.get(this.activeId) : null;
+      const active = this.activeId !== null
+        ? this.sessions.get(this.activeId)
+        : null;
       active?.fit();
     });
     this.resizeObserver.observe(this.terminalArea);

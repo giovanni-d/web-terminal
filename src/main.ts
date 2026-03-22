@@ -9,5 +9,6 @@ const app = new App(root);
 
 app.init().catch((err) => {
   console.error("Failed to initialize terminal:", err);
-  root.innerHTML = `<p class="error">Failed to start. Make sure the server is running.</p>`;
+  root.innerHTML =
+    `<p class="error">Failed to start. Make sure the server is running.</p>`;
 });

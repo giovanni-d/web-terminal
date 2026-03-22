@@ -68,7 +68,9 @@ export class TabBar {
   }
 
   removeTab(id: string): void {
-    const tab = this.tabList.querySelector(`[data-id="${id}"]`) as HTMLElement | null;
+    const tab = this.tabList.querySelector(`[data-id="${id}"]`) as
+      | HTMLElement
+      | null;
     if (tab) {
       const num = parseInt(tab.dataset.num || "0");
       this.usedNumbers.delete(num);
@@ -85,7 +87,9 @@ export class TabBar {
 
   private setupDragDrop(): void {
     this.tabList.addEventListener("dragstart", (e) => {
-      const tab = (e.target as HTMLElement).closest(".tab-bar__tab") as HTMLElement;
+      const tab = (e.target as HTMLElement).closest(
+        ".tab-bar__tab",
+      ) as HTMLElement;
       if (!tab) return;
       this.draggedTab = tab;
       tab.classList.add("tab-bar__tab--dragging");
@@ -104,7 +108,9 @@ export class TabBar {
       e.dataTransfer!.dropEffect = "move";
       if (!this.draggedTab) return;
 
-      const target = (e.target as HTMLElement).closest(".tab-bar__tab") as HTMLElement;
+      const target = (e.target as HTMLElement).closest(
+        ".tab-bar__tab",
+      ) as HTMLElement;
       if (!target || target === this.draggedTab) return;
 
       const tabs = [...this.tabList.children] as HTMLElement[];

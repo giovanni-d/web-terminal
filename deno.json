@@ -1,11 +1,13 @@
 {
-  "name": "@myorg/terminal-wasm",
+  "name": "web-terminal",
   "version": "0.1.0",
   "exports": "./src/main.ts",
   "tasks": {
-    "dev": "deno run -A scripts/dev.ts",
+    "dev": "deno task dev:server & deno task dev:vite",
+    "dev:server": "cd server && cargo watch -w src -x 'run -- --port 3001 --log-level info'",
+    "dev:vite": "deno run -A npm:vite",
     "build": "deno run -A npm:vite build",
-    "build:all": "deno task server:build && deno task build",
+    "build:all": "deno task build && deno task server:build",
     "start": "./server/target/release/terminal-server",
     "server:build": "cd server && cargo build --release",
     "server:clean": "cd server && cargo clean",
