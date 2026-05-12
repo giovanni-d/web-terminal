@@ -2,6 +2,8 @@
 
 A browser-based terminal emulator. Connects to a real shell running on the server via WebSocket. Ships as a single binary with the frontend embedded.
 
+> ⚠️ **Beta — use at your own risk.** No auth, no TLS, no sandboxing. Anyone who reaches the port gets a shell. Local use only.
+
 ## Architecture
 
 ```
